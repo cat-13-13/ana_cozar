@@ -106,3 +106,77 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Funcionalidad del botón scroll to top
+document.addEventListener('DOMContentLoaded', function() {
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+  
+  // Mostrar/ocultar el botón según el scroll
+  window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+      scrollToTopBtn.classList.add('visible');
+    } else {
+      scrollToTopBtn.classList.remove('visible');
+    }
+  });
+  
+  // Función para hacer scroll suave hacia arriba
+  scrollToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Funcionalidad de navegación suave
+  const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        // Calcular la posición teniendo en cuenta el header fijo
+        const headerHeight = document.querySelector('.main-header').offsetHeight;
+        const targetPosition = targetSection.offsetTop - headerHeight - 20; // 20px de margen extra
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Función para actualizar el enlace activo basado en el scroll
+  function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const headerHeight = document.querySelector('.main-header').offsetHeight;
+    const scrollPosition = window.pageYOffset + headerHeight + 100;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      const correspondingLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        // Remover clase active de todos los enlaces
+        navLinks.forEach(link => link.classList.remove('active'));
+        // Agregar clase active al enlace correspondiente
+        if (correspondingLink) {
+          correspondingLink.classList.add('active');
+        }
+      }
+    });
+  }
+
+  // Agregar listener para scroll que actualice el enlace activo
+  window.addEventListener('scroll', updateActiveNavLink);
+  
+  // Ejecutar una vez al cargar para establecer el estado inicial
+  updateActiveNavLink();
+});
