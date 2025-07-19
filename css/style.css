@@ -539,8 +539,8 @@ ul li {
   font-weight: bold;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.5);
-  padding: 10px 15px;
-  border-radius: 50%;
+  padding: 0 20px;
+  border-radius: 10px;
   transition: all 0.3s ease;
   user-select: none;
   z-index: 1001;
