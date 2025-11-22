@@ -166,13 +166,11 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('../assets/Ana-Cozar-Moises-Fdez-Acosta-book-moifernandez-YX484rg3PyU8j5or.jpg');
-  background-size: cover;
-  background-position: center -30px;
+  background: #111 url('../assets/Ana-Cozar-Moises-Fdez-Acosta-book-moifernandez-YX484rg3PyU8j5or.jpg') no-repeat center center / cover;
   background-attachment: fixed;
-  background-repeat: no-repeat;
   filter: grayscale(100%);
   z-index: -1;
+  transition: background-position 0.3s, background-size 0.3s;
 }
 
 @media (min-width: 768px) {
