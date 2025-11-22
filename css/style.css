@@ -382,6 +382,8 @@ ul li {
   list-style: inside;
 }
 .video-reel {
+  display: flex;
+  justify-content: center;
   max-width: 1167px;
   padding: 0;
   margin: 0 auto 30px;
