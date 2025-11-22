@@ -21,7 +21,19 @@
 
     <header class="main-header">
         <div class="logo">ANA CÓZAR</div>
-        <nav class="nav-menu">
+        <button class="burger" id="burgerMenu" aria-label="Abrir menú de navegación" aria-expanded="false"
+            aria-controls="navMenu">
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+            <span class="burger-x" aria-hidden="true" style="display:none">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="5" y1="5" x2="17" y2="17" stroke="#333" stroke-width="2" stroke-linecap="round" />
+                    <line x1="17" y1="5" x2="5" y2="17" stroke="#333" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </span>
+        </button>
+        <nav class="nav-menu" id="navMenu">
             <a href="#inicio">Inicio</a>
             <a href="#actriz">Actriz</a>
             <a href="#creacion-audiovisual">Creación Audiovisual</a>

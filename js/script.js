@@ -1,3 +1,55 @@
+// Menú burger responsive
+document.addEventListener('DOMContentLoaded', function() {
+  const burger = document.getElementById('burgerMenu');
+  const navMenu = document.getElementById('navMenu');
+  const body = document.body;
+
+  if (burger && navMenu) {
+    const burgerX = burger.querySelector('.burger-x');
+    const burgerBars = burger.querySelectorAll('.burger-bar');
+
+    burger.addEventListener('click', function() {
+      const isOpen = navMenu.classList.toggle('open');
+      burger.classList.toggle('open');
+      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      // Mostrar/ocultar la X SVG y las barras
+      if (burgerX) burgerX.style.display = isOpen ? 'block' : 'none';
+      burgerBars.forEach(bar => bar.style.display = isOpen ? 'none' : 'block');
+      // Evitar scroll del body cuando el menú está abierto
+      if (isOpen) {
+        body.style.overflow = 'hidden';
+      } else {
+        body.style.overflow = '';
+      }
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 900) {
+          navMenu.classList.remove('open');
+          burger.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+          if (burgerX) burgerX.style.display = 'none';
+          burgerBars.forEach(bar => bar.style.display = 'block');
+          body.style.overflow = '';
+        }
+      });
+    });
+
+    // Cerrar menú al cambiar tamaño de pantalla a desktop
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 900) {
+        navMenu.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        if (burgerX) burgerX.style.display = 'none';
+        burgerBars.forEach(bar => bar.style.display = 'block');
+        body.style.overflow = '';
+      }
+    });
+  }
+});
 // Aquí puedes agregar código para interacciones futuras:
 // Ejemplo: cambiar clase del menú activo según la URL
 document.querySelectorAll('.menu a').forEach(link => {
