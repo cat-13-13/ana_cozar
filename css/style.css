@@ -769,6 +769,63 @@ ul li {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Contenedor de laureles sobre el video */
+.laurels-container {
+  width: 100%;
+  margin: 0 auto 10px auto;
+}
+.laurels-strip {
+  background: #d2c6b6;
+  /* Un beige más oscuro, coherente con la web */
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  max-width: 500px;
+  min-width: 220px;
+  width: 95%;
+}
+.laurel-img {
+  height: 50px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12));
+  background: transparent;
+  transition: transform 0.2s;
+}
+.laurel-img:hover {
+  transform: scale(1.07) rotate(-2deg);
+}
+@media (max-width: 900px) {
+  .laurels-strip {
+    width: 100%;
+    gap: 10px;
+    padding: 18px 10px 14px 10px;
+  }
+  .laurel-img {
+    height: 45px;
+    max-width: 70px;
+  }
+}
+@media (max-width: 600px) {
+  .laurels-strip {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 2px 8px 2px;
+  }
+  .laurel-img {
+    height: 45px;
+    max-width: 48px;
+  }
+}
+
+
+
 /* Botón scroll to top */
 .scroll-to-top {
   position: fixed;
